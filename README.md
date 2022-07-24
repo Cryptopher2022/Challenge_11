@@ -1,11 +1,153 @@
-# Challenge_11
-Initial - Interim upload - Unfinished work - Bare README file
+# Challenge 11 - Forecasting Net Prophet
+The purpose of this effort is to build time series evaluation tools using Python and Google Collab, which is an online version of Jupyter Notebook.  A purely personal viewpoint is that it was written by the devil himself, but I digress.  
 
-I got stuck on Part 4 and started and restarted again and again.  
-I'm embarrased to turn this in but thought it best I turn something in.  
-I am not finished and I will complete the Challenge.  I will continue
-working on it tomorrow until it's done and done right.  I appreciate
-your patience.  As a point of reference, I worked all week to get through the material
-which I believe I have a very good handle on.  I understand the concepts
-and I know what I'm trying to do.  I'm just having a devil of a time getting
-the right syntax to do what I want.  
+Utilizing time series data and visualizations of the resultant data provide very useful information for the User.  The steps we'll go through are found below.  The most important, and frankly the biggest headache, is to prepare the data so that it's in a usable format.  This can be because of numerous reasons including concatenating two different dataframes together.  The index or datetime formats must be consistent or the concatenation will prove meaningless.  The steps below define the process we'll go through together.    
+
+Forecasting Net Prophet
+You’re a growth analyst at MercadoLibre. With over 200 million users, MercadoLibre is the most popular e-commerce site in Latin America. You've been tasked with analyzing the company's financial and user data in clever ways to make the company grow. So, you want to find out if the ability to predict search traffic can translate into the ability to successfully trade the stock.
+
+Instructions
+
+This section divides the instructions for this Challenge into four steps and an optional fifth step, as follows:
+
+*Step 1: Find unusual patterns in hourly Google search traffic*
+
+*Step 2: Mine the search traffic data for seasonality*
+
+*Step 3: Relate the search traffic to stock price patterns*
+
+*Step 4: Create a time series model with Prophet*
+
+*Step 5 (optional): Forecast revenue by using time series models*
+
+The following subsections detail these steps.
+
+Step 1: Find Unusual Patterns in Hourly Google Search Traffic
+    
+    The data science manager asks if the Google search traffic for the company links to any financial events at the company. Or, does the search traffic data just present random noise? To answer this question, pick out any unusual patterns in the Google search data for the company, and connect them to the corporate financial events.
+
+    To do so, complete the following steps:
+
+    Read the search data into a DataFrame, and then slice the data to just the month of May 2020. (During this month, MercadoLibre released its quarterly financial results.) Use hvPlot to visualize the results. Do any unusual patterns exist?
+
+    Calculate the total search traffic for the month, and then compare the value to the monthly median across all months. Did the Google search traffic increase during the month that MercadoLibre released its financial results?
+
+Step 2: Mine the Search Traffic Data for Seasonality
+    Marketing realizes that they can use the hourly search data, too. If they can track and predict interest in the company and its platform for any time of day, they can focus their marketing efforts around the times that have the most traffic. This will get a greater return on investment (ROI) from their marketing budget.
+
+    To that end, you want to mine the search traffic data for predictable seasonal patterns of interest in the company. To do so, complete the following steps:
+
+    Group the hourly search data to plot the average traffic by the day of the week (for example, Monday vs. Friday).
+
+    Using hvPlot, visualize this traffic as a heatmap, referencing the index.hour as the x-axis and the index.dayofweek as the y-axis. Does any day-of-week effect that you observe concentrate in just a few hours of that day?
+
+    Group the search data by the week of the year. Does the search traffic tend to increase during the winter holiday period (weeks 40 through 52)?
+
+Step 3: Relate the Search Traffic to Stock Price Patterns
+    You mention your work on the search traffic data during a meeting with people in the finance group at the company. They want to know if any relationship between the search data and the company stock price exists, and they ask if you can investigate.
+
+    To do so, complete the following steps:
+
+    Read in and plot the stock price data. Concatenate the stock price data to the search data in a single DataFrame.
+
+    Market events emerged during the year of 2020 that many companies found difficult. But, after the initial shock to global financial markets, new customers and revenue increased for e-commerce platforms. Slice the data to just the first half of 2020 (2020-01 to 2020-06 in the DataFrame), and then use hvPlot to plot the data. Do both time series indicate a common trend that’s consistent with this narrative?
+
+    Create a new column in the DataFrame named “Lagged Search Trends” that offsets, or shifts, the search traffic by one hour. Create two additional columns:
+
+    “Stock Volatility”, which holds an exponentially weighted four-hour rolling average of the company’s stock volatility
+
+    “Hourly Stock Return”, which holds the percent change of the company's stock price on an hourly basis
+
+    Review the time series correlation, and then answer the following question: Does a predictable relationship exist between the lagged search traffic and the stock volatility or between the lagged search traffic and the stock price returns?
+
+Step 4: Create a Time Series Model with Prophet
+    Now, you need to produce a time series model that analyzes and forecasts patterns in the hourly search data. To do so, complete the following steps:
+
+    Set up the Google search data for a Prophet forecasting model.
+
+    After estimating the model, plot the forecast. How's the near-term forecast for the popularity of MercadoLibre?
+
+    Plot the individual time series components of the model to answer the following questions:
+
+    What time of day exhibits the greatest popularity?
+
+    Which day of the week gets the most search traffic?
+
+    What's the lowest point for search traffic in the calendar year?
+
+There were numerous questions posed in this Challenge along the way, which are documented in the program itself.  
+
+Step 5 (Optional - NOT DONE): Forecast Revenue by Using Time Series Models
+    A few weeks after your initial analysis, the finance group follows up to find out if you can help them solve a different problem. Your fame as a growth analyst in the company continues to grow!
+
+    Specifically, the finance group wants a forecast of the total sales for the next quarter. This will dramatically increase their ability to plan budgets and to help guide expectations for the company investors.
+
+    To do so, complete the following steps:
+
+    Read in the daily historical sales (that is, revenue) figures, and then apply a Prophet model to the data.
+
+    Interpret the model output to identify any seasonal patterns in the company's revenue. For example, what are the peak revenue days? (Mondays? Fridays? Something else?)
+
+    Produce a sales forecast for the finance group. Give them a number for the expected total sales in the next quarter. Include the best- and worst-case scenarios to help them make better plans.
+
+
+
+---
+
+## Technologies
+
+Describe the technologies required to use your project such as programming languages, libraries, frameworks, and operating systems. Be sure to include the specific versions of any critical dependencies that you have used in the stable version of your project.
+
+This project was completed almost entirely in Google Collab.  The README.md was drafted in VS Code.  
+
+There were several main libraries used in this project:
+pandas
+Path from pathlib
+matplotlib (inline) - inline means:  "sets the backend of matplotlib to the 'inline' backend: With this backend, the output of plotting commands is displayed inline within frontends like the Jupyter notebook, directly below the code cell that produced it. The resulting plots will then also be stored in the notebook document" - source: https://stackoverflow.com/questions/43027980/purpose-of-matplotlib-inline#:~:text=%25matplotlib%20inline%20sets%20the%20backend,stored%20in%20the%20notebook%20document.
+import holoviews as hv
+from fbprophet import Prophet
+import hvplot.pandas
+import datetime as dt
+
+More information can be found regarding each of these libraries at the following links:
+
+pandas - https://pandas.pydata.org/
+
+Path from pathlib - https://docs.python.org/3/library/pathlib.html
+
+matplotlib - https://matplotlib.org/
+
+holoviews - https://anaconda.org/conda-forge/holoviews
+
+fbprophet - https://facebook.github.io/prophet/docs/quick_start.html
+
+hvplot.pandas - https://hvplot.holoviz.org/
+
+datetime - https://docs.python.org/3/library/datetime.html
+
+This program was written and will run on Windows 10.  
+
+---
+
+## Installation Guide
+
+In this section, you should include detailed installation notes containing code blocks and screenshots.
+
+This depends upon what operating system and environment the User is utilizing.  The author could not successfully load fbprophet so Google Colab was used to write the program.  This environment can be found at:  https://research.google.com/colaboratory/  Although the environment has some drawbacks, it does successfully manage the complete environment for the user.  If the user can successfully load all of the packages cited above, it can be run successfully from Jupiter Notebook, as detailed below.  
+
+From the Command Line in Git Bash, navigate your directory to the location of the file package.  Then, type "Jupyter Notebook" to launch the application used to write and run this program.  It's outside of the scope of this README.md file to explain the installation of Jupyter Notebook.  A screenshot of the Command Line in Git Bash is shown here:  ![Git Bash](./images/VSCode_Git_Bash.png)
+
+From Jupyter Notebook, navigate to the directory where the program is found and click on the program: "crypto_arbitrage.ipynb" as shown here in Jupyter Notebook:  ![Jupyter Notebook](./images/Jupyter_Notebook.png)
+
+
+---
+
+## Contributors
+
+This was done solely by Christopher Todd Garner
+
+---
+
+## License
+
+Feel free to use this program and happy hunting for arbitrage profits.  Add some for loops or the like and optimal profits can be achieved.  
